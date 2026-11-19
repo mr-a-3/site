@@ -1,0 +1,10 @@
+.git
+tooling/
+backups/
+archive/
+storefront/node_modules/
+storefront/.next/
+storefront/dist/
+storefront/.wrangler/
+storefront/PHONE-LINK.txt
+storefront/.phone-access-key

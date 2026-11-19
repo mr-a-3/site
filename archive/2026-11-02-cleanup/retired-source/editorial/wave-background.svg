@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="none">
+ <defs>
+  <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+   <stop stop-color="#b52345" stop-opacity=".52"/>
+   <stop offset=".42" stop-color="#ce526c" stop-opacity=".26"/>
+   <stop offset="1" stop-color="#df8c9e" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="crest" x1="0" y1="0" x2="0" y2="1">
+   <stop stop-color="#fff8f4" stop-opacity=".8"/>
+   <stop offset="1" stop-color="#f1b6c2" stop-opacity="0"/>
+  </linearGradient>
+  <g id="wave">
+   <path d="M-120 265C-20 285 60 270 105 218C152 165 151 92 227 65C278 47 334 62 352 105C320 88 287 95 278 121C265 160 303 187 352 199C433 220 505 276 590 265C690 285 770 270 815 218C862 165 861 92 937 65C988 47 1044 62 1062 105C1030 88 997 95 988 121C975 160 1013 187 1062 199C1143 220 1215 276 1330 265V535H-120Z" fill="url(#water)"/>
+   <path d="M111 218C161 159 157 97 229 73C275 57 324 66 344 97C311 83 278 96 270 123C259 164 303 194 352 205C295 197 240 170 248 126C254 99 274 86 299 84C240 64 194 116 174 161C158 192 138 212 111 218Z" fill="url(#crest)"/>
+   <path d="M821 218C871 159 867 97 939 73C985 57 1034 66 1054 97C1021 83 988 96 980 123C969 164 1013 194 1062 205C1005 197 950 170 958 126C964 99 984 86 1009 84C950 64 904 116 884 161C868 192 848 212 821 218Z" fill="url(#crest)"/>
+  </g>
+ </defs>
+ <use href="#wave" transform="translate(0,-15)"/>
+ <use href="#wave" transform="translate(-145,320)" opacity=".65"/>
+</svg>

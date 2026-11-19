@@ -16,11 +16,11 @@ COPY storefront ./storefront
 WORKDIR /app/storefront
 RUN npm run build
 
-# Expose web port
+# Expose web port 3000
 EXPOSE 3000
 
 ENV PORT=3000
 ENV NODE_ENV=production
 
-# Start wrangler local runner bound to 0.0.0.0 and port 3000 for VPS reverse proxy
-CMD ["node", "--import", "./scripts/sites-env.mjs", "./node_modules/wrangler/bin/wrangler.js", "dev", "--config", "dist/server/wrangler.json", "--local", "--persist-to", ".wrangler/state", "--ip", "0.0.0.0", "--port", "3000", "--inspector-port", "0"]
+# Start wrangler local runner bound to 0.0.0.0 and port 3000 (or $PORT if set by deployer)
+CMD ["sh", "-c", "node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js dev --config dist/server/wrangler.json --local --persist-to .wrangler/state --ip 0.0.0.0 --port ${PORT:-3000} --inspector-port 0"]

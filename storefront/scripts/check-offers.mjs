@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';
+const context={};vm.createContext(context);vm.runInContext(fs.readFileSync('client/offers-state.js','utf8'),context);
+const now=Date.parse('2026-11-01T12:00:00Z');
+const store={promotion:{enabled:true,banner:true,popup:false,title:'Offers',categories:['Women','Kids'],startsAt:null,endsAt:null},products:[{id:1,category:'Women',price:100,discountPrice:70,stock:2},{id:2,category:'Kids',price:200,discountPrice:160,stock:null},{id:3,category:'Men',price:100,discountPrice:50,stock:1},{id:4,category:'Women',price:100,discountPrice:40,stock:0},{id:5,category:'Kids',price:100,stock:5}]};
+let offer=context.activePromotion(store,now);assert.equal(offer.percent,30);assert.equal(offer.items.map(p=>p.id).join(','),'1,2');assert.equal(offer.categories.join(','),'Women,Kids');
+store.promotion.categories=[];assert.equal(context.activePromotion(store,now).percent,50);
+store.promotion.enabled=false;assert.equal(context.activePromotion(store,now),null);store.promotion.enabled=true;
+store.promotion.startsAt='2026-11-02T00:00:00Z';assert.equal(context.activePromotion(store,now),null);store.promotion.startsAt=null;
+store.promotion.endsAt='2026-11-01T12:00:00Z';assert.equal(context.activePromotion(store,now),null);store.promotion.endsAt=null;
+store.products.forEach(p=>p.stock=0);assert.equal(context.activePromotion(store,now),null);
+console.log('PASS: multi-category offers, actual maximum discount, stock exclusion, all-category scope, off switch, future start, end boundary and empty offers. No saved data changed.');

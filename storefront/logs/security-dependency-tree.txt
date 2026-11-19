@@ -1,0 +1,29 @@
+site-creator-vinext-starter@0.1.0 D:\site\storefront
+├─┬ @cloudflare/vite-plugin@1.66.0
+│ └─┬ wrangler@4.154.0
+│   └── esbuild@0.28.2 deduped
+├─┬ drizzle-kit@0.31.10
+│ ├── esbuild@0.25.12
+│ └─┬ tsx@4.22.1
+│   └── esbuild@0.28.2 deduped
+├─┬ eslint-config-next@16.4.3
+│ ├─┬ eslint-plugin-import@2.32.0
+│ │ └── minimatch@3.1.5 deduped
+│ ├─┬ eslint-plugin-jsx-a11y@6.10.2
+│ │ └── minimatch@3.1.5 deduped
+│ └─┬ eslint-plugin-react@7.37.5
+│   └── minimatch@3.1.5 deduped
+├─┬ eslint@9.39.4
+│ ├─┬ @eslint/config-array@0.21.2
+│ │ └── minimatch@3.1.5 deduped
+│ ├─┬ @eslint/eslintrc@3.3.7
+│ │ └── minimatch@3.1.5 deduped
+│ └── minimatch@3.1.5
+├─┬ vinext@1.4.0
+│ └─┬ @vercel/og@1.0.3
+│   └── satori@0.33.5
+├─┬ vite@8.3.5
+│ └── esbuild@0.28.2
+└─┬ wrangler@4.156.0
+  └── esbuild@0.28.2 deduped
+

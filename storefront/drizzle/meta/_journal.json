@@ -1,0 +1,48 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1793352538210,
+      "tag": "0000_uneven_union_jack",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1793352538211,
+      "tag": "0001_store_orders",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1793352538212,
+      "tag": "0002_record_type",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1793352538213,
+      "tag": "0003_customer_orders",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1793352538214,
+      "tag": "0004_customer_payment",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1793352538215,
+      "tag": "0005_request_limits",
+      "breakpoints": true
+    }
+  ]
+}

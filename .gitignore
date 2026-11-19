@@ -1,0 +1,19 @@
+# Tooling and backups
+tooling/
+backups/
+archive/
+.git_backup
+storefront/.git_backup
+.store-stopped
+
+# Storefront build and state artifacts
+storefront/node_modules/
+storefront/.next/
+storefront/dist/
+storefront/.wrangler/
+storefront/.sites-runtime/
+storefront/PHONE-LINK.txt
+storefront/.phone-access-key
+storefront/.phone-sharing
+storefront/.env*
+storefront/.dev.vars*

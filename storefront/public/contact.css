@@ -1,0 +1,95 @@
+.social-section{display:grid;grid-template-columns:1fr 1.4fr;gap:28px 50px;padding:48px 0 40px;align-items:center}.social-heading .eyebrow{font-size:10px;font-weight:650;letter-spacing:.16em;color:var(--orange)}.social-heading h2{font-family:Manrope,sans-serif;font-size:clamp(32px,3.6vw,50px);font-weight:750;letter-spacing:-2px;line-height:1.15;margin:12px 0 0;color:var(--ink)}.contact-numbers{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}.contact-number{position:relative;min-width:0;display:flex;flex-direction:column;gap:14px;padding:22px;border:1px solid var(--line);border-radius:12px;background:#e9b9c109;transition:background .3s,border-color .3s,transform .4s var(--ease)}.contact-number:hover{transform:translateY(-3px);background:#e9b9c118;border-color:var(--orange)}.number-label{font-size:9px;font-weight:650;letter-spacing:.13em;color:var(--muted)}.contact-number strong{font-size:clamp(17px,1.65vw,27px);font-weight:700;letter-spacing:-.5px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums;line-height:1.35;color:var(--ink)}.number-arrow{position:absolute;right:17px;top:17px;font-size:19px;color:var(--orange)}.contact-number-pending{grid-column:1/-1;font-size:14px;color:var(--muted);margin:0;text-align:right}.social-links{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.social-link{min-height:70px;justify-content:flex-start;gap:13px;padding:20px 25px;border-radius:12px;font-size:16px;font-weight:700;color:var(--ink);border-color:var(--line);background:#e9b9c107;letter-spacing:-.15px}.social-link svg{width:23px;height:23px;flex:none;stroke-width:1.7;color:var(--orange)}.social-arrow{margin-left:auto;font-size:23px;font-weight:400;color:var(--orange)}.social-link:disabled{opacity:1;color:var(--muted);border-style:dashed;background:transparent;cursor:default}.social-link:disabled svg,.social-link:disabled .social-arrow{color:var(--muted)}.contact-details{font-size:14px;font-weight:500;gap:28px}.contact-details .eyebrow{font-size:9px;font-weight:650}
+@media(max-width:900px){.social-section{grid-template-columns:1fr;gap:25px}.contact-number-pending{text-align:left}.contact-number strong{font-size:26px}.social-links{gap:10px}.social-link{font-size:14px;padding:18px}.social-heading h2{font-size:39px}}
+@media(max-width:600px){.social-section{padding:35px 0 30px;gap:22px}.social-heading h2{font-size:35px;letter-spacing:-1.5px}.social-heading .eyebrow{font-size:9px}.contact-numbers{grid-template-columns:1fr;gap:12px}.contact-number{padding:20px;gap:10px}.contact-number strong{font-size:27px}.contact-number-pending{font-size:12px}.social-links{grid-template-columns:1fr;gap:10px}.social-link{min-height:60px;padding:17px 20px;font-size:16px}.social-link svg{width:22px;height:22px}.social-arrow{font-size:22px}.contact-details{align-items:flex-start;flex-direction:column;gap:17px}}
+@media(prefers-reduced-motion:reduce){.contact-number{transition:none}.contact-number:hover{transform:none}}
+
+/* Shared WhatsApp brand silhouette in the contact link and floating action. */
+.social-link svg.whatsapp-logo,.whatsapp-float svg.whatsapp-logo{display:block;fill:currentColor;stroke:none;stroke-width:0;flex:0 0 auto;width:24px;height:24px;overflow:visible}
+.whatsapp-float svg.whatsapp-logo{width:22px;height:22px}
+/* Compact contact section with a matching location action. */
+.store-address{display:flex;align-items:flex-start;gap:9px;margin:0;white-space:pre-line}.store-address img{flex:none;width:20px;height:25px}.store-address span{padding-top:3px;overflow-wrap:anywhere}
+.social-links{grid-template-columns:repeat(4,minmax(0,1fr))}.location-link svg.location-logo{fill:none;stroke:none;stroke-width:0;overflow:visible}
+@media(max-width:900px){.social-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){
+ .social-section{padding:22px 0;gap:14px}
+ .social-heading h2{font-size:25px;line-height:1.2;letter-spacing:-.8px;margin:0}
+ .contact-numbers{gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+ .contact-number{display:grid;grid-template-columns:minmax(72px,.8fr) minmax(0,1.6fr);align-items:center;gap:8px;min-height:52px;padding:10px 13px;border:0;border-top:1px solid var(--line);border-radius:0;background:transparent;transition:none}
+ .contact-number:first-child{border-top:0}
+ .contact-number:hover{transform:none}
+ .number-label{font-size:9px;letter-spacing:.04em;line-height:1.4}
+ .contact-number strong{font-size:15px;letter-spacing:0;line-height:1.35;text-align:right}
+ .social-links{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .social-link{min-height:46px;justify-content:flex-start;padding:10px 12px;font-size:14px;gap:9px;border-radius:10px}
+ .social-link svg,.social-link svg.whatsapp-logo{width:20px;height:20px}
+ .social-arrow{display:none}
+ .contact-details{gap:10px;font-size:13px}
+}
+
+.social-section {
+  --contact-glass: linear-gradient(145deg, #ffffffcf 0%, #fffaf59c 52%, #f3dce39c 100%);
+  --contact-edge: #fffdfb;
+  --contact-shadow: inset 0 1px 0 #fff, inset 0 -1px 0 #9e5c6d19, 0 5px 16px #512a3610;
+  --contact-hover: #b16d81;
+}
+
+html[data-theme=dark] .social-section {
+  --contact-glass: linear-gradient(145deg, #ffffff17, #ffffff07 52%, #ba638129);
+  --contact-edge: #ffffff24;
+  --contact-shadow: inset 0 1px 0 #ffffff20, inset 0 -1px 0 #0003, 0 5px 16px #0004;
+  --contact-hover: #ce8b9f;
+}
+
+.social-section .contact-number,
+.social-section .social-link {
+  border: 1px solid var(--contact-edge);
+  border-radius: 18px;
+  background: var(--contact-glass);
+  box-shadow: var(--contact-shadow);
+  -webkit-backdrop-filter: blur(12px) saturate(145%);
+  backdrop-filter: blur(12px) saturate(145%);
+}
+
+.social-section :is(.contact-number, .social-link:not(:disabled)):hover {
+  border-color: var(--contact-hover);
+}
+
+.social-section :is(.contact-number, .social-link):focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.social-section .social-link:disabled {
+  border-style: dashed;
+  border-color: var(--line);
+  box-shadow: inset 0 1px 0 var(--contact-edge);
+}
+
+@media (min-width: 901px) {
+  .social-section .contact-number { padding-inline: clamp(12px, 1.4vw, 22px); }
+  .social-section .contact-number strong { font-size: clamp(16px, 1.4vw, 27px); }
+}
+
+@media (max-width: 600px) {
+  .social-section .contact-numbers {
+    border-color: var(--contact-edge);
+    border-radius: 16px;
+    background: var(--contact-glass);
+    box-shadow: var(--contact-shadow);
+    -webkit-backdrop-filter: blur(12px) saturate(145%);
+    backdrop-filter: blur(12px) saturate(145%);
+  }
+
+  .social-section .contact-number {
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .social-section .contact-number + .contact-number { border-top: 1px solid var(--line); }
+  .social-section .contact-number:focus-visible { outline-offset: -3px; }
+  .social-section .social-link { border-radius: 14px; }
+}

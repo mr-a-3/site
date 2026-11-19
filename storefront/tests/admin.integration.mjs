@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+const origin=process.env.TEST_ORIGIN||'http://127.0.0.1:5173';
+const cookie='__sites_local_auth=1'; // Loopback-only development identity; never deployed.
+const headers={Cookie:cookie,Origin:origin,'Content-Type':'application/json'};
+const get=()=>fetch(origin+'/api/settings',{headers:{Cookie:cookie}}).then(r=>r.json());
+assert.equal((await fetch(origin+'/api/settings')).status,403,'Anonymous settings read must be denied');
+assert.equal((await fetch(origin+'/api/settings',{method:'PUT',headers:{Origin:origin,'Content-Type':'application/json'},body:'{}'})).status,403,'Anonymous settings write must be denied');
+assert.equal((await fetch(origin+'/api/upload',{method:'POST',headers:{Origin:origin},body:'invalid'})).status,403,'Anonymous uploads must be denied');
+assert.equal((await fetch(origin+'/api/settings',{method:'PUT',headers:{...headers,Origin:'https://example.com'},body:'{}'})).status,403,'Cross-origin writes must be denied');
+let {config,revision}=await get();const original=structuredClone(config);original.texts.heroDescription='Considered objects. A different perspective.';
+const invalid=structuredClone(config);invalid.products[0].price=-1;
+assert.equal((await fetch(origin+'/api/settings',{method:'PUT',headers,body:JSON.stringify({config:invalid,revision})})).status,400,'Negative prices must be rejected');
+invalid.products[0].price=1;invalid.contacts.instagram='javascript:alert(1)';
+assert.equal((await fetch(origin+'/api/settings',{method:'PUT',headers,body:JSON.stringify({config:invalid,revision})})).status,400,'Unsafe links must be rejected');
+assert.equal((await fetch(origin+'/api/upload',{method:'POST',headers:{Cookie:cookie,Origin:origin,'Content-Type':'image/svg+xml'},body:'<svg onload="alert(1)"/>'})).status,400,'Executable image types must be rejected');
+const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aWQAAAABJRU5ErkJggg==','base64');
+const upload=await fetch(origin+'/api/upload',{method:'POST',headers:{Cookie:cookie,Origin:origin,'Content-Type':'image/png'},body:png});assert.equal(upload.status,200);
+const {url}=await upload.json();assert.match(url,/^\/media\//);const image=await fetch(origin+url);assert.equal(image.status,200);assert.equal(image.headers.get('content-type'),'image/png');assert.deepEqual(Buffer.from(await image.arrayBuffer()),png,'Uploaded image must round-trip unchanged');
+config.texts.heroDescription='Persisted integration check';config.products[0].price=155.25;config.storyImage=url;config.contacts.phone2='+880 1700000002';
+const saved=await fetch(origin+'/api/settings',{method:'PUT',headers,body:JSON.stringify({config,revision})});assert.equal(saved.status,200);const result=await saved.json();
+const reloaded=await get();assert.equal(reloaded.config.products[0].price,155.25);assert.equal(reloaded.config.storyImage,url);assert.equal(reloaded.config.contacts.phone2,'+880 1700000002');assert.equal(reloaded.revision,result.revision);
+const storefront=await fetch(origin+'/').then(r=>r.text());assert.ok(storefront.includes('Persisted integration check'),'Saved content must reach storefront response');
+assert.equal((await fetch(origin+'/api/settings',{method:'PUT',headers,body:JSON.stringify({config,revision})})).status,409,'Stale drafts must not overwrite newer changes');
+assert.equal((await fetch(origin+'/api/settings',{method:'PUT',headers,body:JSON.stringify({config:original,revision:reloaded.revision})})).status,200,'Restore preview data');
+console.log('Passed: authorization, origin checks, validation, image upload/readback, persistence, storefront delivery, and stale-save protection.');

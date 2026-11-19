@@ -1,0 +1,115 @@
+.e-depth{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;contain:paint}
+.e-gradient-flow{position:absolute;inset:0;overflow:hidden;background:radial-gradient(ellipse at 15% 10%,#b31b3914,transparent 65%),#faf8f5;--glow-color:179,27,57}
+/* Broad feathered wave: blush first, then a moderately richer red. */
+.e-gradient-flow span{position:absolute;inset:-60% -80%;pointer-events:none;background:radial-gradient(ellipse 46% 44% at 50% 50%,rgba(var(--glow-color),.48) 0%,rgba(var(--glow-color),.38) 38%,rgba(var(--glow-color),.16) 68%,transparent 100%);animation:form-refined-glow 18s cubic-bezier(.45,0,.55,1) infinite paused;will-change:transform}
+.e-depth[data-animate=true] .e-gradient-flow span{animation-play-state:running}
+.e-depth[data-character=persianCat] .e-gradient-flow span{visibility:hidden}
+html[data-theme=dark] .e-gradient-flow{background:#171416;--glow-color:186,53,85}
+@keyframes form-refined-glow{0%,6%{transform:translate3d(-65%,5%,0);opacity:0}24%{transform:translate3d(-18%,1%,0);opacity:.3}36%{transform:translate3d(-5%,0,0);opacity:.55}50%,62%{transform:translate3d(0,0,0);opacity:1}82%{transform:translate3d(25%,-2%,0);opacity:.5}100%{transform:translate3d(65%,-5%,0);opacity:0}}
+/* Keep readable, stable colours throughout the background animation. */
+.editorial-hero .e-title-mask>span{animation:none;color:var(--form-ink)}
+.editorial-hero .e-primary{animation:none;background:var(--form-accent);color:var(--form-on-accent)}
+@media(prefers-reduced-motion:reduce){.e-gradient-flow span{animation:none!important;opacity:.4;transform:none}}
+/* One light paper plane follows the open space above the headline. */
+.e-plane-route{position:absolute;top:8%;left:0;width:48%;height:65px;color:#8c263d;pointer-events:none}
+.e-plane-flight{position:absolute;inset:0;animation:form-plane-flight 16s linear 1 both paused;opacity:0}
+.e-plane-flight:before{content:'';position:absolute;width:85px;height:1px;left:-88px;top:22px;background:linear-gradient(90deg,transparent,currentColor);opacity:.25;transform:rotate(-6deg);transform-origin:right}
+.e-paper-plane{display:block;width:42px;height:36px;transform:rotate(18deg);filter:drop-shadow(0 3px 4px #62203312)}
+.e-depth[data-animate=true] .e-plane-flight{animation-play-state:running}
+html[data-theme=dark] .e-plane-route{color:#e8a1ae}
+@keyframes form-plane-flight{
+ 0%{transform:translate3d(-18%,16px,0);opacity:0}
+ 8%{opacity:.75}
+ 28%{transform:translate3d(25%,-8px,0)}
+ 55%{transform:translate3d(60%,10px,0);opacity:.75}
+ 78%{transform:translate3d(100%,-12px,0);opacity:0}
+ 100%{transform:translate3d(115%,-12px,0);opacity:0}
+}
+@media(max-width:800px){.e-plane-route{top:12px;width:92%;height:30px}.e-paper-plane{width:28px;height:24px}.e-plane-flight{animation-duration:13s}.e-plane-flight:before{width:48px;left:-50px;top:15px}}
+@media(prefers-reduced-motion:reduce){.e-plane-route{display:none}.e-plane-flight{animation:none!important}}
+/* Lightweight peacock: trailing eye feathers, crest and a slow wing beat. */
+.e-peacock-route{position:absolute;top:14%;left:0;width:47%;height:80px;color:#416b70;pointer-events:none}
+.e-peacock-flight{position:absolute;inset:0;opacity:0;animation:form-peacock-flight 18s linear 1 both paused}
+.e-peacock{display:block;width:116px;height:auto;overflow:visible}
+.e-peacock-wing{transform-origin:110px 49px;animation:form-peacock-wing 1.8s ease-in-out infinite alternate paused}
+.e-peacock-tail{transform-origin:105px 53px;animation:form-peacock-tail 3.6s ease-in-out infinite alternate paused}
+.e-depth[data-animate=true] :is(.e-peacock-flight,.e-peacock-wing,.e-peacock-tail){animation-play-state:running}
+html[data-theme=dark] .e-peacock-route{color:#8ebfc0}
+@keyframes form-peacock-flight{0%{transform:translate3d(-25%,8px,0);opacity:0}10%{opacity:.7}30%{transform:translate3d(35%,-12px,0);opacity:.7}52%{transform:translate3d(80%,5px,0);opacity:.7}65%{transform:translate3d(105%,-15px,0);opacity:0}100%{transform:translate3d(110%,-15px,0);opacity:0}}
+@keyframes form-peacock-wing{from{transform:rotate(-18deg) scaleY(.72)}to{transform:rotate(14deg) scaleY(1)}}
+@keyframes form-peacock-tail{from{transform:rotate(-4deg)}to{transform:rotate(5deg)}}
+@media(max-width:800px){.e-peacock-route{top:4px;width:85%;height:45px}.e-peacock{width:76px}.e-peacock-flight{animation-duration:15s}}
+@media(prefers-reduced-motion:reduce){.e-peacock-route{display:none}.e-peacock-flight,.e-peacock-wing,.e-peacock-tail{animation:none!important}}
+
+.e-cat-route{position:absolute;top:10%;left:0;width:47%;height:80px;color:#bc8652;pointer-events:none}.e-cat-travel{position:absolute;inset:0;opacity:0;animation:form-plane-flight 18s linear 1 both paused}.e-wildcat{width:112px;height:auto}.e-tiger{color:#ce8a4c}.e-cat-legs-front,.e-cat-legs-back{transform-origin:90px 58px;animation:form-cat-step .7s ease-in-out infinite alternate paused}.e-cat-legs-back{animation-direction:alternate-reverse}.e-depth[data-animate=true] :is(.e-cat-travel,.e-cat-legs-front,.e-cat-legs-back){animation-play-state:running}html[data-theme=dark] .e-cat-route{color:#d9b17b}@keyframes form-cat-step{from{transform:rotate(-7deg)}to{transform:rotate(7deg)}}@media(max-width:800px){.e-cat-route{top:0;width:85%;height:42px}.e-wildcat{width:74px}.e-cat-travel{animation-duration:15s}}@media(prefers-reduced-motion:reduce){.e-cat-route{display:none}}
+
+.e-wildcat{width:140px}.e-cat-legs-front,.e-cat-legs-back{transform-origin:110px 78px}@media(max-width:800px){.e-wildcat{width:88px}}
+
+/* Transparent stickers use the same exclusive slot and pause gates. */
+.e-sticker-route{position:absolute;top:5%;left:0;width:47%;height:100px;pointer-events:none}
+.e-sticker-travel{position:absolute;inset:0;opacity:0;animation:form-sticker-travel 18s linear 1 both paused}
+.e-sticker{display:block;width:130px;height:100px;object-fit:contain;filter:drop-shadow(0 3px 3px #30101c20)}
+
+.e-sticker-route-astronaut .e-sticker-travel{animation-name:form-rocket-flight}
+.e-depth[data-animate=true] .e-sticker-travel{animation-play-state:running}
+@keyframes form-sticker-travel{0%{transform:translate3d(-30%,0,0);opacity:0}10%,72%{opacity:1}90%,100%{transform:translate3d(108%,0,0);opacity:0}}
+@keyframes form-rocket-flight{0%{transform:translate3d(-30%,16px,0);opacity:0}10%{opacity:1}40%{transform:translate3d(40%,-8px,0);opacity:1}72%{opacity:1}90%,100%{transform:translate3d(108%,-35px,0);opacity:0}}
+@media(max-width:800px){.e-sticker-route{top:0;width:85%;height:48px}.e-sticker{width:76px;height:48px}.e-sticker-travel{animation-duration:15s}}
+@media(prefers-reduced-motion:reduce){.e-sticker-route{display:none}.e-sticker-travel{animation:none!important}}
+.editorial-hero .e-slider-controls{color:var(--form-ink)}.editorial-hero:has(.e-depth[data-animate=true]) .e-slider-controls{animation-play-state:running}.editorial-hero .e-slider-controls :is(.e-pause,.e-indicator){color:inherit}.editorial-hero .e-pause{border-color:currentColor}.editorial-hero .e-progress-fill{background:currentColor}@media(prefers-reduced-motion:reduce){.editorial-hero .e-slider-controls{animation:none!important}}
+
+
+/* Original side-profile SVGs, with wheels and flame attached to their artwork. */
+.e-sticker{width:150px;height:auto;overflow:visible}
+.e-sticker-body{transform-origin:130px 90px;animation:form-sticker-ride .9s ease-in-out infinite alternate paused}
+.e-drawn-wheel{animation:form-drawn-wheel .8s linear infinite paused}
+.e-drawn-flame{transform-origin:77px 105px;animation:form-rocket-thrust .22s ease-in-out infinite alternate paused}
+.e-sticker-astronaut .e-sticker-body{animation:form-rocket-hover 2.2s ease-in-out infinite alternate paused}
+.e-depth[data-animate=true] :is(.e-sticker-body,.e-drawn-wheel,.e-drawn-flame){animation-play-state:running}
+@keyframes form-drawn-wheel{to{transform:rotate(360deg)}}
+@keyframes form-sticker-ride{from{transform:translateY(0)}to{transform:translateY(-1.5px)}}
+@keyframes form-rocket-hover{from{transform:translateY(2px) rotate(-2deg)}to{transform:translateY(-3px) rotate(2deg)}}
+@keyframes form-rocket-thrust{from{transform:scaleX(.75) scaleY(.85)}to{transform:scaleX(1.1) scaleY(1.08)}}
+@media(max-width:800px){.e-sticker{width:88px;height:auto}}
+@media(prefers-reduced-motion:reduce){.e-sticker-body,.e-drawn-wheel,.e-drawn-flame{animation:none!important}}
+/* Shared timing keeps a single character moving through the glow. */
+.e-depth :is(.e-plane-route,.e-peacock-route,.e-cat-route,.e-sticker-route){width:46%;top:3%}
+.e-depth :is(.e-plane-flight,.e-peacock-flight,.e-cat-travel,.e-sticker-travel){animation:form-refined-leader 18s linear infinite paused}
+.e-depth[data-animate=true] :is(.e-plane-flight,.e-peacock-flight,.e-cat-travel,.e-sticker-travel){animation-play-state:running}
+@keyframes form-refined-leader{0%,5%{transform:translate3d(-20%,0,0);opacity:0}15%{opacity:.8}65%{opacity:.8}80%,100%{transform:translate3d(105%,0,0);opacity:0}}
+@media(max-width:800px){.e-depth :is(.e-plane-route,.e-peacock-route,.e-cat-route,.e-sticker-route){width:85%;top:0}}
+@media(prefers-reduced-motion:reduce){.e-depth :is(.e-plane-route,.e-peacock-route,.e-cat-route,.e-sticker-route){display:none}}
+
+
+
+
+/* The trail is part of the travelling wrapper, anchored to each drawing's rear. */
+.e-depth :is(.e-plane-flight,.e-peacock-flight,.e-sticker-travel){--trail-x:16px;--trail-y:40px}
+.e-depth .e-plane-flight{--trail-x:9px;--trail-y:18px}
+.e-depth .e-peacock-flight{--trail-x:20px;--trail-y:38px}
+.e-depth .e-sticker-travel{--trail-x:22px;--trail-y:56px}
+.e-depth .e-sticker-route-astronaut .e-sticker-travel{--trail-x:44px;--trail-y:61px}
+.e-depth :is(.e-plane-flight,.e-peacock-flight,.e-sticker-travel)::before{content:'';position:absolute;left:auto;right:calc(100% - var(--trail-x));top:var(--trail-y);width:clamp(160px,18vw,290px);height:76px;background:radial-gradient(ellipse at 100% 50%,#b523455c 0%,#ca486647 24%,#d96a8229 48%,transparent 72%);border-radius:50%;filter:blur(5px);transform:translateY(-50%);opacity:1;pointer-events:none}
+.e-depth :is(.e-paper-plane,.e-peacock,.e-wildcat,.e-sticker){position:relative}
+html[data-theme=dark] .e-depth :is(.e-plane-flight,.e-peacock-flight,.e-sticker-travel)::before{background:radial-gradient(ellipse at 100% 50%,#ef64845c,#c63b5b38 40%,transparent 72%)}
+@media(max-width:800px){
+ .e-depth :is(.e-plane-flight,.e-peacock-flight,.e-sticker-travel)::before{width:155px;height:42px;filter:blur(3px)}
+ .e-depth .e-plane-flight{--trail-x:6px;--trail-y:12px}
+ .e-depth .e-peacock-flight{--trail-x:13px;--trail-y:25px}
+ .e-depth .e-sticker-travel{--trail-x:13px;--trail-y:33px}
+ .e-depth .e-sticker-route-astronaut .e-sticker-travel{--trail-x:26px;--trail-y:36px}
+}
+/* Keep phone characters below the floating header and above the headline. */
+@media(max-width:700px){
+ .e-depth :is(.e-plane-route,.e-peacock-route,.e-cat-route,.e-sticker-route){top:76px;height:36px}
+ .e-depth .e-sticker{width:64px;height:auto}
+ .e-depth .e-wildcat{width:62px;height:auto}
+ .e-depth .e-peacock{width:60px;height:auto}
+ .e-depth .e-paper-plane{width:26px;height:23px}
+ .e-depth .e-peacock-flight{--trail-y:20px}
+ .e-depth .e-sticker-travel{--trail-x:10px;--trail-y:25px}
+ .e-depth .e-sticker-route-astronaut .e-sticker-travel{--trail-x:19px;--trail-y:26px}
+}
+/* Explicit stacking keeps decorative artwork above the gradient's composited layer. */
+.e-gradient-flow{z-index:0}
+.e-depth :is(.e-plane-route,.e-peacock-route,.e-cat-route,.e-sticker-route){z-index:1}
